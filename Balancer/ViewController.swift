@@ -20,7 +20,30 @@ class ViewController: UIViewController {
     }
     
     @objc private func openSetupView() {
-        print(#function)
+        addNewExpense()
+    }
+    
+    func addNewExpense() {
+        let alert = UIAlertController(title: "Новый расход", message: "Введите сумму, которую потратили", preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.placeholder = "Введите сумму"
+            textField.autocapitalizationType = .none
+            textField.keyboardType = .numberPad
+        }
+        
+        alert.addTextField { textField in
+            textField.placeholder = "Добавьте комментарий"
+            textField.autocapitalizationType = .none
+            textField.keyboardType = .numberPad
+        }
+        
+        let okayAction = UIAlertAction(title: "Добавить", style: .default)
+        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel)
+        
+        alert.addAction(okayAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
     }
 }
 
